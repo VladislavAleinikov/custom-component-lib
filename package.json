@@ -1,11 +1,11 @@
 {
   "name": "@vlad-aleynikov/custom-component-lib",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "main": "./build/index.js",
   "scripts": {
     "publish": "webpack --env mode=production && npm version patch && npm publish",
     "build:dev": "webpack --env mode=development",
-    "build:prod": "webpack --env mode=production",
+    "build:prod": "webpack --env mode=production && tsc --emitDeclarationOnly",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "jest",
