@@ -1,0 +1,116 @@
+.container {
+    min-width: 150px;
+    text-align: left;
+    border: 2px solid #ccc;
+    position: relative;
+    border-radius: 6px;
+    cursor: pointer;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+
+    .input {
+        position: relative;
+        padding: 7px 11px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 7px;
+
+        .label {
+            position: absolute;
+            padding: 0 5px;
+            top: 5px;
+            left: 5px;
+            color: #82868b;
+            background: #fff;
+            -webkit-transition: 0.3s;
+            transition: 0.3s;
+        }
+    }
+
+    &.selected {
+        border-color: #1e4bd1;
+
+        .label {
+            top: -7px;
+            font-size: 0.8rem;
+            color: #1e4bd1;
+        }
+    }
+
+    .tool {
+        svg {
+            -webkit-transition: 0.3s;
+            transition: 0.3s;
+        }
+
+        svg.translate {
+            -webkit-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+    }
+
+    .dropdown-menu {
+        width: max-content;
+        max-height: 312px;
+        min-height: 50px;
+        position: absolute;
+        right: 0;
+        -webkit-transform: translateY(6px);
+        -ms-transform: translateY(6px);
+        transform: translateY(6px);
+        background: #fff;
+        border: 1px solid #dbdbdb;
+        border-radius: 4px;
+        box-shadow:
+            0px 5px 5px -3px rgba(0, 0, 0, 0.2),
+            0px 8px 10px 1px rgba(0, 0, 0, 0.14),
+            0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+        overflow: auto;
+        z-index: 99;
+
+        &::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    }
+
+    .dropdown-item {
+        cursor: pointer;
+        padding: 10px 20px;
+        -webkit-transition: background-color 0.35s ease;
+        transition: background-color 0.35s ease;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.04);
+        }
+
+        &.selected {
+            background-color: rgba(25, 118, 210, 0.08);
+        }
+    }
+}
+
+@media (hover: hover) {
+    .container:hover {
+        border-color: #1e4bd1;
+    }
+    .dropdown-item:hover {
+        background-color: rgba(0, 0, 0, 0.04);
+    }
+}
