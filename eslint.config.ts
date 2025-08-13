@@ -11,7 +11,7 @@ export default tseslint.config(
       react: eslintReact,
     },
   },
-  { ignores: ["node_modules/", "build/", "coverage", "**/*.stories.tsx"] },
+  { ignores: ["node_modules/", "build/", "coverage", "**/*.stories.tsx", "**/*.test.tsx"] },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
