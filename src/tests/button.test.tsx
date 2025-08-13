@@ -1,3 +1,4 @@
+import React from "react";
 import "@testing-library/jest-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { Button } from "../components/button";
@@ -22,7 +23,7 @@ describe("Button Component", () => {
     render(<Button size="medium">Click me</Button>);
 
     const button = screen.getByRole("button");
-    
+
     expect(button).toHaveClass("button");
     expect(button).toHaveClass("contained");
     expect(button).toHaveClass("medium");
@@ -39,7 +40,7 @@ describe("Button Component", () => {
         size={size as "small" | "medium" | "large"}
       >
         {variant} {size}
-      </Button>,
+      </Button>
     );
 
     const button = screen.getByRole("button");
@@ -51,7 +52,7 @@ describe("Button Component", () => {
     render(
       <Button size="medium" className="custom-class">
         Custom Class
-      </Button>,
+      </Button>
     );
 
     const button = screen.getByRole("button");
@@ -65,7 +66,7 @@ describe("Button Component", () => {
     render(
       <Button size="medium">
         <span>Child content</span>
-      </Button>,
+      </Button>
     );
 
     expect(screen.getByText("Child content")).toBeInTheDocument();
@@ -82,7 +83,7 @@ describe("Button Component", () => {
     render(
       <Button size="medium" disabled {...mockProps}>
         Disabled
-      </Button>,
+      </Button>
     );
 
     const button = screen.getByRole("button");
@@ -101,7 +102,7 @@ describe("Button Component", () => {
         data-testid="custom-button"
       >
         Submit
-      </Button>,
+      </Button>
     );
 
     const button = screen.getByTestId("custom-button");

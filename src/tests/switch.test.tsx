@@ -1,3 +1,4 @@
+import React from "react";
 import "@testing-library/jest-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { Switch } from "../components/switch";
@@ -78,7 +79,7 @@ describe("Switch Component", () => {
 
   it("updates when controlled", () => {
     const { rerender } = render(
-      <Switch checked={false} onChange={mockOnChange} />,
+      <Switch checked={false} onChange={mockOnChange} />
     );
 
     const switchElement = screen.getByRole("checkbox");

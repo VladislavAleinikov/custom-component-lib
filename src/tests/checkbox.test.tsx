@@ -1,3 +1,4 @@
+import React from "react";
 import "@testing-library/jest-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { Checkbox } from "../components/checkbox";
@@ -25,7 +26,7 @@ describe("Checkbox Component", () => {
         value="accept"
         disabled
         data-testid="custom-checkbox"
-      />,
+      />
     );
 
     const checkbox = screen.getByTestId("custom-checkbox");
@@ -73,5 +74,5 @@ describe("Checkbox Component", () => {
 
     expect(mockOnChange).toHaveBeenCalledTimes(1);
     expect(screen.getByRole("checkbox")).toBeChecked();
-  });          
+  });
 });
