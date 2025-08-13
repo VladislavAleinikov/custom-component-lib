@@ -14,9 +14,14 @@ export function buildWebpack(options: BuildOptions): webpack.Configuration {
     output: {
       path: paths.output,
       filename: "index.js",
-      library: "custom-component-lib",
-      libraryTarget: "umd",
+      library: {
+        type: "module"
+      },
+      module: true,
       clean: true,
+    },
+    experiments: {
+      outputModule: true,
     },
     plugins: buildPlugins(options),
     module: {
