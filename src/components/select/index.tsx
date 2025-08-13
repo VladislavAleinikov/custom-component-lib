@@ -57,27 +57,23 @@ export const Select = ({
         data-testid="select-input"
       >
         <div className={styles.label}>{label}</div>
-        <div className={styles["selected-value"]} data-testid="selected-value">
-          {selectedValue?.label}
-        </div>
-        <div className={styles.tools}>
-          <div
-            className={`${styles.tool} ${showMenu ? styles.translate : ""}`}
-            data-testid="select-tool"
+        <div data-testid="selected-value">{selectedValue?.label}</div>
+        <div
+          className={`${styles.tool} ${showMenu ? styles.translate : ""}`}
+          data-testid="select-tool"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            width="18"
+            height="18"
+            stroke="#222"
+            strokeWidth="1.5"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
-            <svg
-              viewBox="0 0 24 24"
-              width="18"
-              height="18"
-              stroke="#222"
-              strokeWidth="1.5"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <polyline points="6 9 12 15 18 9" />
-            </svg>
-          </div>
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
         </div>
       </div>
 

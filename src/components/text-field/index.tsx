@@ -21,7 +21,7 @@ export const TextField = ({
       } ${className}`}
       data-testid="text-field-container"
     >
-      <label className={styles.box}>
+      <label>
         <input required type="text" className={styles.input} {...props} />
         <span className={styles.label}>{error ? "Error" : label}</span>
         {helperText && <p className={styles["helper-text"]}>{helperText}</p>}
