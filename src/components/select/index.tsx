@@ -10,6 +10,9 @@ interface SelectProps {
   options: SelectOption[];
   value?: SelectOption;
   label: string;
+  open?: boolean;
+  onOpen?: () => void;
+  onClose?: () => void;
   onChange: (newValue: SelectOption) => void;
   className?: string;
 }
@@ -19,15 +22,23 @@ export const Select = ({
   label,
   value,
   onChange,
+  open,
+  onOpen,
+  onClose,
   className = "",
 }: SelectProps) => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
-  const [selectedValue, setSelectedValue] = useState<SelectOption | undefined>(
-    value,
-  );
+  const [selectedValue, setSelectedValue] = useState<SelectOption | undefined>(value);
 
   const handleInputClick = () => {
-    setShowMenu(!showMenu);
+    if(typeof open === "undefined"){
+      setShowMenu(!showMenu);
+    }
+    else if(open) {
+      onClose();
+    } else {
+      onOpen();
+    }
   };
 
   const onItemClick = (option: SelectOption) => {
@@ -47,7 +58,7 @@ export const Select = ({
   return (
     <div
       className={`${styles.container}  ${
-        selectedValue || showMenu ? styles.selected : ""
+        selectedValue || (open ?? showMenu) ? styles.selected : ""
       } ${className}`}
       data-testid="select-container"
     >
@@ -59,7 +70,9 @@ export const Select = ({
         <div className={styles.label}>{label}</div>
         <div data-testid="selected-value">{selectedValue?.label}</div>
         <div
-          className={`${styles.tool} ${showMenu ? styles.translate : ""}`}
+          className={`${styles.tool} ${
+            open ?? showMenu ? styles.translate : ""
+          }`}
           data-testid="select-tool"
         >
           <svg
@@ -77,7 +90,7 @@ export const Select = ({
         </div>
       </div>
 
-      {showMenu && (
+      {(open ?? showMenu) && (
         <div className={styles["dropdown-menu"]} data-testid="dropdown-menu">
           {options.map((option) => (
             <div

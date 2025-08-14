@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { Select } from "../components/select";
-import { ComponentProps } from "react";
+import { ComponentProps, useState } from "react";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 type StoryProps = ComponentProps<typeof Select>;
@@ -32,5 +32,36 @@ export const BasicSelect: Story = {
     ],
     label: "Please select...",
     onChange: () => {},
+  },
+};
+
+export const ControledSelect: Story = {
+  args: {},
+  render: (...args) => {
+    const [open, setOpen] = useState(false);
+
+    return (
+      <Select
+        options={[
+          {
+            label: "Option 1",
+            value: "opt1",
+          },
+          {
+            label: "Option 2",
+            value: "opt2",
+          },
+          {
+            label: "Option 3",
+            value: "opt3",
+          },
+        ]}
+        label="Please select..."
+        onChange={() => {}}
+        open={open}
+        onClose={() => setOpen(false)}
+        onOpen={() => setOpen(true)}
+      />
+    );
   },
 };
