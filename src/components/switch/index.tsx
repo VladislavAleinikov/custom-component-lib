@@ -1,6 +1,6 @@
 import * as styles from "./switch.module.scss";
 
-interface CheckboxProps {
+interface SwitchProps {
   checked?: boolean;
   onChange: () => void;
   disabled?: boolean;
@@ -12,7 +12,7 @@ export const Switch = ({
   onChange,
   disabled = false,
   className = "",
-}: CheckboxProps) => {
+}: SwitchProps) => {
   return (
     <label className={`${styles.switch} ${className}`}>
       <input
