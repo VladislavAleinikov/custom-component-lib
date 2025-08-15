@@ -24,9 +24,13 @@ describe("Select Component", () => {
   ];
   const mockLabel = "Test Select";
   const mockOnChange = jest.fn();
+  const mockOnOpen = jest.fn();
+  const mockOnClose = jest.fn();
 
   beforeEach(() => {
     mockOnChange.mockClear();
+    mockOnOpen.mockClear();
+    mockOnClose.mockClear();
   });
 
   it("renders closed state correctly", () => {
@@ -67,6 +71,42 @@ describe("Select Component", () => {
     mockOptions.forEach((option) => {
       expect(screen.getByText(option.label)).toBeInTheDocument();
     });
+  });
+
+  it("render with controlled state correctly", () => {
+    const { rerender } = render(
+      <Select
+        options={mockOptions}
+        label={mockLabel}
+        open={false}
+        onOpen={mockOnOpen}
+        onClose={mockOnClose}
+        onChange={mockOnChange}
+      />
+    );
+
+    expect(screen.queryByTestId("dropdown-menu")).not.toBeInTheDocument();
+
+    fireEvent.click(screen.getByTestId("select-input"));
+    expect(mockOnOpen).toHaveBeenCalledTimes(1);
+    expect(screen.queryByTestId("dropdown-menu")).not.toBeInTheDocument();
+
+    rerender(
+      <Select
+        options={mockOptions}
+        label={mockLabel}
+        open={true}
+        onOpen={mockOnOpen}
+        onClose={mockOnClose}
+        onChange={mockOnChange}
+      />
+    );
+
+    expect(screen.getByTestId("dropdown-menu")).toBeInTheDocument();
+
+    fireEvent.click(screen.getByTestId("select-input"));
+    expect(mockOnClose).toHaveBeenCalledTimes(1);
+    expect(screen.getByTestId("dropdown-menu")).toBeInTheDocument();
   });
 
   it("selects an option and closes dropdown", () => {
