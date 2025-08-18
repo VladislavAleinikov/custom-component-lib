@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "module": "esnext",
+    "target": "es5",
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "resolveJsonModule": true,
+    "declaration": true,
+    "outDir": "./build/",
+    "declarationDir": "./build/",
+    "sourceMap": true
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "build", "./src/stories", "./src/tests"]
+}
