@@ -109,6 +109,16 @@ describe("Select Component", () => {
     expect(screen.getByTestId("dropdown-menu")).toBeInTheDocument();
   });
 
+  it("closes dropdown on non select click", () => {
+    render(
+      <Select options={mockOptions} label={mockLabel} onChange={mockOnChange} />
+    );
+
+    fireEvent.click(document.body);
+
+    expect(screen.queryByTestId("dropdown-menu")).not.toBeInTheDocument();
+  })
+
   it("selects an option and closes dropdown", () => {
     render(
       <Select options={mockOptions} label={mockLabel} onChange={mockOnChange} />
